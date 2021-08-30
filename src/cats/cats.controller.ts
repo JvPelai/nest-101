@@ -10,7 +10,7 @@ export class CatsController {
 
   @Post()
   async create(@Body() createCatDto: CreateCatDto) {
-    throw new ForbiddenException();
+    this.catsService.create(createCatDto);
   }
 
   @Get()
