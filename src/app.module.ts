@@ -6,9 +6,17 @@ import { HttpExceptionFilter } from './errors/http-exception.filter';
 import { RolesGuard } from './guards/roles.guard';
 import { logger } from './middlewares/logger.middleware';
 import { ValidationPipe } from './pipes/validation.pipe';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from './config/config.module';
 
 @Module({
-  imports: [CatsModule],
+  imports: [
+    CatsModule,
+    UsersModule,
+    AuthModule,
+    ConfigModule.register({ folder: './config' }),
+  ],
   providers: [
     {
       provide: APP_FILTER,
